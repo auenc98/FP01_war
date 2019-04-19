@@ -170,16 +170,21 @@ public:
 
 	void iWinRound() {
 		if (in_WAR == false) {
-			myStorage.push_front(myCard);
-			myStorage.push_front(comCard);
+			int a = lootPile.front();
+			int z = lootPile.back();
+			lootPile.pop_front();
+			lootPile.pop_back();
+			myStorage.push_front(a);
+			myStorage.push_back(z);
 		}
 		else {
-			myStorage.push_front(myCard);
-			myStorage.push_front(comCard);
 			while (!lootPile.empty()) {
+				int a = lootPile.front();
 				int z = lootPile.back();
+				lootPile.pop_front();
 				lootPile.pop_back();
-				myStorage.push_front(z);
+				myStorage.push_front(a);
+				myStorage.push_back(z);
 			}
 			in_WAR = false;
 		}
@@ -191,16 +196,21 @@ public:
 
 	void comWinRound() {
 		if (in_WAR == false) {
-			comStorage.push_front(myCard);
-			comStorage.push_front(comCard);
+			int a = lootPile.front();
+			int z = lootPile.back();
+			lootPile.pop_front();
+			lootPile.pop_back();
+			comStorage.push_front(a);
+			comStorage.push_back(z);
 		}
 		else {
-			comStorage.push_front(myCard);
-			comStorage.push_front(comCard);
 			while (!lootPile.empty()) {
+				int a = lootPile.front();
 				int z = lootPile.back();
+				lootPile.pop_front();
 				lootPile.pop_back();
-				comStorage.push_front(z);
+				comStorage.push_front(a);
+				comStorage.push_back(z);
 			}
 			in_WAR = false;
 		}
