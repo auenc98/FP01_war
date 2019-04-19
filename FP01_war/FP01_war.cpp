@@ -1,10 +1,10 @@
 /**
-  Brian Cox and Cody Auen
-  coxb and auenc
+  Cody Auen, Brian Cox, & Sean Meyers
 
-  L07: War Card Game
+  FP01: War-Revised
 
-  In this lab we will be recreating the card game by the name of War.
+  This project is an extension of L07: War.
+  This implemntation is different in the original in the use of deques.
   The rules will be the same as the original besides one change.
   The cards will be from 0-9 instead of the regular 2-10 and face cards.
  */
@@ -67,8 +67,6 @@ public:
 			newdecks.pop_back();
 		}
 	}
-
-
 
 	void make_move() {
 		char stop;
@@ -154,10 +152,14 @@ public:
 	}
 
 	void compare() {
-		if (myCard > comCard) {
+		lootPile.push_front(myCard);
+		lootPile.push_back(comCard);
+		int a = lootPile.front();
+		int z = lootPile.back();
+		if (a > z) {
 			iWinRound();
 		}
-		else if (comCard > myCard) {
+		else if (z > a) {
 			comWinRound();
 		}
 		else if (comCard == myCard) {
